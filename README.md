@@ -17,6 +17,6 @@ Es un programa muy básico. El script *sending.py* permite enviar un archivo, ac
 **Observación**: los archivos se convierten de *base64* a un *TryteString*. El tamaño por transacción se encuentra limitado a 2187 caracteres; grandes archivos requerirán tantas transacciones que es probable que el
 nodo que las está uniendo al *tangle* rechace la solicitud.
 - Cuando se envía un archivo se deben apuntar los siguientes parámetros:
-![alt text](https://github.com/fjaviergb/MII_IOTA_PDF/images/input.PNG)
+![parameters](https://MII_IOTA_PDF.github.com/images/input.png)
 - Estos parámetro se introducirán en *receiving* líneas 9 y 12.
 
