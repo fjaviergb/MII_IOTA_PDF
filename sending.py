@@ -8,11 +8,11 @@ api = Iota('https://nodes.thetangle.org:443')
 # SEED CREATED BY PSEUDO-RAND IN PYTHON - NOT SECURE
 seed = 'WVVBOHNRYPONH9GW9BXVAKGGYBULIUPCDVTFSUAFFJP99NTJTGGQRWQCXSWELVDQIRFINIQDMULGEXSWN'
 address = ['WRIIHMSNYWKGRNRWLLPTANKPYAGHIOWKFYSWOPCZMQIEAFQVWJKVMOSOAFGVOOBGUJISAZFQAPFQXIO9D']
-tag = ['PRUEBADEPDF']
+tag = ['PRUEBADEPDFA']
 
 
 #FILE 
-f = open("C:\\Master\\CUARTO CUATRIMESTRE\\Comunicacion y Divulgacion\\trabajo\\0.docx", "rb")
+f = open("C:\\Master\\CUARTO CUATRIMESTRE\\Comunicacion y Divulgacion\\trabajo\\0.txt", "rb")
 pdfdatab=f.read()
 f.close()
 
@@ -35,12 +35,12 @@ print(len(compressed))
 #bretdata=Sb64PDF.encode('utf-8')
 decompressed = zlib.decompress(compressed)
 bPDFout=codecs.decode(b64PDF, 'base64')
-datafile=open("C:\\Master\\CUARTO CUATRIMESTRE\\Comunicacion y Divulgacion\\trabajo\\1.docx",'wb')
+datafile=open("C:\\Master\\CUARTO CUATRIMESTRE\\Comunicacion y Divulgacion\\trabajo\\1.txt",'wb')
 datafile.write(bPDFout)
 datafile.close()
 
-
 message = [TryteString.from_bytes(compressed)]
+print(len(message[0]))
 
 tx = ProposedTransaction(
     address = Address(random.choice(address)),
@@ -51,7 +51,9 @@ tx = ProposedTransaction(
 
 result = api.send_transfer(transfers=[tx])
 
-print('Transacción %s enviada correctamente')
+print('Transacción enviada correctamente',
+        result['bundle'].tail_transaction.hash,
+        result['bundle'].hash)
 
 
 
