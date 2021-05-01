@@ -5,7 +5,7 @@ import zlib
 # IOTA API CONNECTION. 
 api = Iota('https://nodes.thetangle.org:443')
 address = ['WRIIHMSNYATYRNRWLLPTANKPYAGHIOWKFYSWOPCZMQIEAFQVWJKVMOSOAFGVOOBGUJIBNVFQAPFQXIO9D']
-tag = ['DIVULGACION']
+tag = ['DIVULGYCOMUN']
 
 #FILE 
 f = open("0.txt", "rb")
