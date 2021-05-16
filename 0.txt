@@ -1,153 +1,145 @@
 DLT EN EL INTERNET DE LAS COSAS
-Arc�ngel M�nguez Anchuelo, F. Javier Gonz�lez Beteg�n, Sergio Navas Garc�a
-Escuela T�cnica superior de Ingenieros Industriales, Universidad Polit�cnica de Madrid
+Arcángel Mínguez Anchuelo, F. Javier González Betegón, Sergio Navas García
+Escuela Técnica superior de Ingenieros Industriales, Universidad Politécnica de Madrid
 arcangel.minguez.anchuelo@alumnos.upm.es 
 javier.gbetegon@alumnos.upm.es
 s.navas@alumnos.upm.es 
 
  
-Abstract � Este art�culo analiza la aplicaci�n de las DLT (o �blockchain�) como soporte de comunicaci�n en el Internet de las Cosas, o IoT por sus siglas y realiza un ejemplo pr�ctico. Si el IoT se fundamenta en la conectividad de dispositivos para su coordinaci�n, las DLT proporcionan el medio por el que todos esos objetos pueden enviar y recibir informaci�n. 
-I.	IOT � INTERNET OF THINGS
-A.	Introducci�n al IoT
-El Internet de las Cosas, o IoT por sus siglas en ingl�s, se ha convertido en el nuevo paradigma de las comunicaciones inal�mbricas. Fundamentalmente, el Internet de las cosas consiste en una serie de objetos, sensores, actuadores, etc. que pueden interaccionar entre s� con el objetivo de cumplir una funci�n espec�fica. [1]
-Uno de los dispositivos m�s empleados en la actualidad son los Identificadores de Radiofrecuencia, o RFID (Radio Frecuency IDentification) por sus siglas en ingl�s. 
-En lo que al potencial impacto en la Sociedad que pudiera tener el IoT respecta, el Consejo Nacional de Inteligencia de los Estados Unidos ha incluido esta tecnolog�a en el top seis de �tecnolog�as disruptivas� que pueden generar un cambio en el pa�s. [2]
+Abstract — Este artículo analiza la aplicación de las DLT (o ‘blockchain’) como soporte de comunicación en el Internet de las Cosas, o IoT por sus siglas y realiza un ejemplo práctico. Si el IoT se fundamenta en la conectividad de dispositivos para su coordinación, las DLT proporcionan el medio por el que todos esos objetos pueden enviar y recibir información. 
+I.	IOT – INTERNET OF THINGS
+A.	Introducción al IoT
+El Internet de las Cosas, o IoT por sus siglas en inglés, se ha convertido en el nuevo paradigma de las comunicaciones inalámbricas. Fundamentalmente, el Internet de las cosas consiste en una serie de objetos, sensores, actuadores, etc. que pueden interaccionar entre sí con el objetivo de cumplir una función específica. [1]
+Uno de los dispositivos más empleados en la actualidad son los Identificadores de Radiofrecuencia, o RFID (Radio Frecuency IDentification) por sus siglas en inglés. 
+En lo que al potencial impacto en la Sociedad que pudiera tener el IoT respecta, el Consejo Nacional de Inteligencia de los Estados Unidos ha incluido esta tecnología en el top seis de “tecnologías disruptivas” que pueden generar un cambio en el país. [2]
 B.	Enfoques del IoT
-El Internet de las cosas debe ser entendido como el resultado de la convergencia de tres visiones claramente diferenciadas que nacen de los principales grupos de inter�s involucrados en esta tecnolog�a: 
+El Internet de las cosas debe ser entendido como el resultado de la convergencia de tres visiones claramente diferenciadas que nacen de los principales grupos de interés involucrados en esta tecnología: 
 i. Orientada hacia los dispositivos, representa la perspectiva del hardware del IoT 
 ii. Orientadas hacia Internet, representa la perspectiva del software del IoT.
-iii. Orientada hacia la Arquitectura de datos, representa la componente estructural de la informaci�n del IoT.
+iii. Orientada hacia la Arquitectura de datos, representa la componente estructural de la información del IoT.
 
 C.	Aplicaciones 
-A pesar de que las aplicaciones del Internet de las cosas parecen innumerables, lo cierto es que actualmente son pocas las que est�n plenamente desarrolladas y extendidas en la sociedad. Con el desarrollo de la tecnolog�a, se espera que a medio plazo se desarrollen aplicaciones en los siguientes campos: 
-� Transporte y log�stica 
-� Salud 
-� Entornos Conectados (hogar, trabajo, etc.) 
-� �mbito personal  
+A pesar de que las aplicaciones del Internet de las cosas parecen innumerables, lo cierto es que actualmente son pocas las que están plenamente desarrolladas y extendidas en la sociedad. Con el desarrollo de la tecnología, se espera que a medio plazo se desarrollen aplicaciones en los siguientes campos: 
+• Transporte y logística 
+• Salud 
+• Entornos Conectados (hogar, trabajo, etc.) 
+• Ámbito personal  
 D.	Retos del IoT 
-Para que el Internet de las cosas tenga una implantaci�n y aceptaci�n plena, deben superarse barreras o retos de diferente �ndole que existen hoy en d�a. La naturaleza de dichos retos es tanto tecnol�gica como �tica y tienen por objetivo garantizar que el IoT sea una herramienta que proporcione un nivel sofisticado de conectividad, comportamiento aut�nomo sin comprometer la fiabilidad, la seguridad y la privacidad de sus usuarios. 
+Para que el Internet de las cosas tenga una implantación y aceptación plena, deben superarse barreras o retos de diferente índole que existen hoy en día. La naturaleza de dichos retos es tanto tecnológica como ética y tienen por objetivo garantizar que el IoT sea una herramienta que proporcione un nivel sofisticado de conectividad, comportamiento autónomo sin comprometer la fiabilidad, la seguridad y la privacidad de sus usuarios. 
 En la Tabla 1 se enumeran los principales retos.
-II.	DLT � DISTRIBUTED LEDGER TECHNOLOGY
-Las Redes de Contabilidad Distribuida, a partir de ahora referidas como DLT, y las Blockchain, funcionan sobre las mismas bases: ambos son libros de registro digitalizados y descentralizados. Consecuentemente, en algunas ocasiones, estos t�rminos son confundidos. A continuaci�n, se pretende aclarar su distinci�n. [3]
-Primeramente, hay que destacar que el Blockchain es una aplicaci�n de la tecnolog�a DLT. Por lo tanto, mientras que el primero presenta unas prestaciones concretas, el segundo puede desarrollarse de diferentes maneras. 
-Por tanto, se va a explicar el concepto de DLT, porque posee aspectos comunes a todos sus tipos de red. T�cnicamente, una DLT es una base de datos distribuida que, siguiendo una estructura de red determinada y unos algoritmos consensuados y aceptados por todos los integrantes, permiten el intercambio y registro de valor. En este punto cabe preguntarse qu� es ese valor. Se considera el valor como un concepto compuesto: puede ser una divisa (e.g. Bitcoin), informaci�n de un sensor o una base de datos, entre otros muchos ejemplos. Hay que destacar que, a pesar de estar gestionada por varios usuarios, ninguno de ellos ejerce como verificador o �rbitro, por lo que no existe ninguna autoridad, la verificaci�n se realiza por el consenso de los usuarios. Entre las ventajas de este sistema destaca el aumento de transparencia debido al registro distribuido, de forma que resulta m�s dif�cil realizar alg�n tipo de fraude o manipulaci�n, al mismo tiempo que se complica poder �hackearlo� (requerir�a controlar la mayor�a de los usuarios). [4] 
-Centr�ndose en las caracter�sticas generales de las redes DLT, todas ellas pueden definirse como un protocolo de comunicaci�n y sincronizaci�n de informaci�n digital entre los m�ltiples usuarios que la componen, de forma descentralizada o distribuida. El acceso y participaci�n en la red puede estar controlado o resultar libre, aunque en cualquier caso los usuarios deben cumplir las reglas consensuadas entre el resto de los usuarios y los desarrolladores. Uno de los factores que caracteriza una red es su estructura (centralizada, descentralizada o distribuida). 
- 
+II.	DLT – DISTRIBUTED LEDGER TECHNOLOGY
+Las Redes de Contabilidad Distribuida, a partir de ahora referidas como DLT, y las Blockchain, funcionan sobre las mismas bases: ambos son libros de registro digitalizados y descentralizados. Consecuentemente, en algunas ocasiones, estos términos son confundidos. A continuación, se pretende aclarar su distinción. [3]
+Primeramente, hay que destacar que el Blockchain es una aplicación de la tecnología DLT. Por lo tanto, mientras que el primero presenta unas prestaciones concretas, el segundo puede desarrollarse de diferentes maneras. 
+Por tanto, se va a explicar el concepto de DLT, porque posee aspectos comunes a todos sus tipos de red. Técnicamente, una DLT es una base de datos distribuida que, siguiendo una estructura de red determinada y unos algoritmos consensuados y aceptados por todos los integrantes, permiten el intercambio y registro de valor. En este punto cabe preguntarse qué es ese valor. Se considera el valor como un concepto compuesto: puede ser una divisa (e.g. Bitcoin), información de un sensor o una base de datos, entre otros muchos ejemplos. Hay que destacar que, a pesar de estar gestionada por varios usuarios, ninguno de ellos ejerce como verificador o árbitro, por lo que no existe ninguna autoridad, la verificación se realiza por el consenso de los usuarios. Entre las ventajas de este sistema destaca el aumento de transparencia debido al registro distribuido, de forma que resulta más difícil realizar algún tipo de fraude o manipulación, al mismo tiempo que se complica poder ‘hackearlo’ (requeriría controlar la mayoría de los usuarios). [4] 
+Centrándose en las características generales de las redes DLT, todas ellas pueden definirse como un protocolo de comunicación y sincronización de información digital entre los múltiples usuarios que la componen, de forma descentralizada o distribuida. El acceso y participación en la red puede estar controlado o resultar libre, aunque en cualquier caso los usuarios deben cumplir las reglas consensuadas entre el resto de los usuarios y los desarrolladores. Uno de los factores que caracteriza una red es su estructura (centralizada, descentralizada o distribuida). 
 Figura 2. Tipos de redes DLT. Fuente: [5]
-Esto deriva en que existan redes sin permiso (sin administrador central: el acceso y participaci�n es completamente p�blico y pueden considerarse redes distribuidas) y redes con permiso (una figura ejerce como administrador y tiene la capacidad de limitar el acceso de participantes y configurar las reglas de consenso; se tratan de redes descentralizadas). 
-Otro aspecto que se podr�a considerar para clasificar las redes desde su creaci�n es su arquitectura de red, pudiendo ser esta BlockDAG, TDAG, Holochain, Hashgraph o Blockchain. A continuaci�n, se expondr� un ejemplo de uso de TDAG.
+Esto deriva en que existan redes sin permiso (sin administrador central: el acceso y participación es completamente público y pueden considerarse redes distribuidas) y redes con permiso (una figura ejerce como administrador y tiene la capacidad de limitar el acceso de participantes y configurar las reglas de consenso; se tratan de redes descentralizadas). 
+Otro aspecto que se podría considerar para clasificar las redes desde su creación es su arquitectura de red, pudiendo ser esta BlockDAG, TDAG, Holochain, Hashgraph o Blockchain. A continuación, se expondrá un ejemplo de uso de TDAG.
 
 III.	CONCLUSIONES USO DE LAS DLT EN EL IOT
-El protocolo de soporte para la comunicaci�n empleado en el IoT debe considerar una serie de principios [6]:
-i. los fabricantes de dispositivos almacenan informaci�n relevante en sus propios sistemas de gesti�n, a menudo encriptados y de acceso restringido (Data silos);
-ii. fuera de las fronteras de su almacenamiento, las compa��as tienen limitada la propiedad de la informaci�n;
-iii. la integraci�n transversal de la informaci�n personal de los clientes entra en conflicto con la privacidad y el uso interesado;
-iv. la informaci�n de los dispositivos IoT es altamente heterog�nea (texto, formatos, lenguajes, audiovisual, etc.). 
-Se han iniciado propuestas de creaci�n de est�ndares internacionales como el OPC Unified Architecture, pero a�n es pronto para hablar de una unificaci�n de protocolos. Las DLT, por sus caracter�sticas, proporcionan un registro inmutable de transacciones, con o sin valor monetario de por medio, que implica: 
-i. Su caracter descentralizado diluye la responsabilidad sobre la propiedad de la informaci�n, siempre que existan protocolos que aseguren su seguridad;
-ii. mejora el acceso a la informaci�n al distribuir la informaci�n entre distintos �puntos de acceso� (o nodos), lo que disminuye los cuellos de botella de gestores de bases de datos como los privilegios de acceso;
-iii. y puede accederse a ellas a trav�s de protocolos de comunicaci�n ligeros o est�ndares como HTTP o TCP.
-iv. Esta estandarizaci�n en la comunicaci�n permite la inclusi�n de dispositivos ligeros, tales como Smart watches, sensores u ordenadores de placa simple (SBC), como la Raspberry Pi.
-v. La seguridad, privacidad y autenticidad de la informaci�n es fruto de un consenso entre los usuarios de la red a trav�s de protocolos y, adem�s, existen m�todos de encriptaci�n, como el sistema criptogr�fico asim�trico RSA, que los usuarios podr�an adoptar para incrementarla.
+El protocolo de soporte para la comunicación empleado en el IoT debe considerar una serie de principios [6]:
+i. los fabricantes de dispositivos almacenan información relevante en sus propios sistemas de gestión, a menudo encriptados y de acceso restringido (Data silos);
+ii. fuera de las fronteras de su almacenamiento, las compañías tienen limitada la propiedad de la información;
+iii. la integración transversal de la información personal de los clientes entra en conflicto con la privacidad y el uso interesado;
+iv. la información de los dispositivos IoT es altamente heterogénea (texto, formatos, lenguajes, audiovisual, etc.). 
+Se han iniciado propuestas de creación de estándares internacionales como el OPC Unified Architecture, pero aún es pronto para hablar de una unificación de protocolos. Las DLT, por sus características, proporcionan un registro inmutable de transacciones, con o sin valor monetario de por medio, que implica: 
+i. Su carácter descentralizado diluye la responsabilidad sobre la propiedad de la información, siempre que existan protocolos que aseguren su seguridad;
+ii. mejora el acceso a la información al distribuir la información entre distintos “puntos de acceso” (o nodos), lo que disminuye los cuellos de botella de gestores de bases de datos como los privilegios de acceso;
+iii. y puede accederse a ellas a través de protocolos de comunicación ligeros o estándares como HTTP o TCP.
+iv. Esta estandarización en la comunicación permite la inclusión de dispositivos ligeros, tales como Smart watches, sensores u ordenadores de placa simple (SBC), como la Raspberry Pi.
+v. La seguridad, privacidad y autenticidad de la información es fruto de un consenso entre los usuarios de la red a través de protocolos y, además, existen métodos de encriptación, como el sistema criptográfico asimétrico RSA, que los usuarios podrían adoptar para incrementarla.
 
-Sin embargo, no todas las DLT existentes en el mercado son aptas para una finalidad de IoT; siendo las principales caracter�sticas a disponer: [7]
-i. Los dispositivos que componen el IoT realizan peticiones con gran frecuencia. El funcionamiento de la DLT debe estar asegurado independientemente del n�mero creciente de mensajes � escalabilidad.
-ii. Algunas aplicaciones de IoT, como sensores de seguridad, requerir�an que la red y su informaci�n se encuentren siempre disponibles. Disponer de sistemas de redundancia, backups u otros medios que aseguren la estabilidad de la red es esencial.
-iii. El env�o de las transacciones a la red debe ser gratuito o, en caso de requerir un valor monetario, cercano a cero; especialmente por la gran frecuencia de emisi�n.
-iv. Los nodos que se encargan de la comunicaci�n P2P no realizan el gasto computacional altruistamente; o la actividad les proporciona suficientes beneficios para mantener los servidores o no ser� capaz de desarrollarse.
-De esta manera, en la Tabla 2 se representa una comparaci�n de las DLT m�s conocidas y su viabilidad en proyectos de IoT: [7]
-Existe una correlaci�n entre el valor de mercado de la red y la comisi�n por transacci�n; y esto se debe al actual enfoque de las DLT como inversi�n monetaria. Sin embargo, existen redes como OByte e Iota que centran sus esfuerzos en su empleo como bases de datos descentralizadas. Sus caracter�sticas de sin comisiones y aumento del rendimiento a mayor transacciones (escalabilidad) las convierten en herramientas �tiles para las etapas tempranas del IoT.
-A continuaci�n, se desarrollar� un uso discreto de la red Iota como base de datos. El programa empleado, escrito en python, puede encontrarse en el repositorio: https://github.com/fjaviergb/MII_IOTA_PDF [8]
-La red de IOTA se emplear� para subir este art�culo de forma abierta, sin encriptaci�n previa, y de acceso completamente gratuito. Esto es posible a que IOTA, en cada transacci�n, permite incorporar un mensaje de hasta 2187 caracteres.
-Un archivo multimedia, en bytes, puede ser convertido a caracteres normales y ser enviado a trav�s de este medio; posteriormente, se reensamblar�a para obtener el archivo original. Esta operaci�n es conocida como base64 Encode and Decode, pudi�ndose encontrar multitud de aplicaciones en protocolos estandarizados como HTTP o TCP. 
-La red presenta una restricci�n evidente de tama�o; y es que, aunque la API que dispone la plataforma permite unir distintas transacciones para enviar mensajes de m�s de 2187 caracteres, los nodos que se encargan de transmitir este mensaje pueden rechazar la petici�n por motivos de rendimiento. Sin embargo, las aplicaciones que se asignan a las etapas tempranas de IoT son de poco tama�o, sin llegar a los kB; distan mucho del tama�o m�nimo de un documento Word, que ocupa 13 kB aproximadamente.
-El programa que se encarga de enviar un archivo, llamado como �0.txt�, es: [8]
-from iota import Iota, TryteString, ProposedTransaction, Address, Tag
+Sin embargo, no todas las DLT existentes en el mercado son aptas para una finalidad de IoT; siendo las principales características a disponer: [7]
+i. Los dispositivos que componen el IoT realizan peticiones con gran frecuencia. El funcionamiento de la DLT debe estar asegurado independientemente del número creciente de mensajes – escalabilidad.
+ii. Algunas aplicaciones de IoT, como sensores de seguridad, requerirían que la red y su información se encuentren siempre disponibles. Disponer de sistemas de redundancia, backups u otros medios que aseguren la estabilidad de la red es esencial.
+iii. El envío de las transacciones a la red debe ser gratuito o, en caso de requerir un valor monetario, cercano a cero; especialmente por la gran frecuencia de emisión.
+
+iv. Los nodos que se encargan de la comunicación P2P no realizan el gasto computacional altruistamente; o la actividad les proporciona suficientes beneficios para mantener los servidores o no será capaz de desarrollarse.
+De esta manera, en la Tabla 2 se representa una comparación de las DLT más conocidas y su viabilidad en proyectos de IoT. [7]
+Existe una correlación entre el valor de mercado de la red y la comisión por transacción; y esto se debe al actual enfoque de las DLT como inversión monetaria. Sin embargo, existen redes como OByte e Iota que centran sus esfuerzos en su empleo como bases de datos descentralizadas. Sus características de sin comisiones y el aumento del rendimiento a mayor número de transacciones (escalabilidad) las convierten en herramientas útiles para las etapas tempranas del IoT.
+A continuación, se desarrollará un uso discreto de la red Iota como base de datos. El programa empleado, escrito en python, puede encontrarse en el repositorio: https://github.com/fjaviergb/MII_IOTA_PDF [8]
+La red de IOTA se empleará para subir este artículo de forma abierta, sin encriptación previa, y de acceso completamente gratuito. Esto es posible a que IOTA, en cada transacción, permite enviar información por un valor de 35 kB.
+Un archivo multimedia, en bytes, puede ser convertido a caracteres normales y ser enviado a través de este medio; posteriormente, se reensamblaría para obtener el archivo original. Esta operación es conocida como base64 Encode and Decode, pudiéndose encontrar multitud de aplicaciones en protocolos estandarizados como HTTP o TCP. 
+La red presenta una restricción evidente de tamaño; sin embargo, las aplicaciones que se asignan a las etapas tempranas de IoT son de poco tamaño, sin llegar a los kB; distan mucho del tamaño mínimo de un documento Word, que ocupa 13 kB aproximadamente.
+El programa que se encarga de enviar un archivo, llamado como ‘0.txt’, que contiene todo el texto de este artículo, con una explicación concisa es: [8]
+# Importa todas las librerías necesarias
 import codecs
 import zlib
+import iota_client
 
-# IOTA API CONNECTION. 
-api = Iota('https://nodes.thetangle.org:443')
-address = ['WRIIHMSNYATYRNRWLLPTANKPYAGHIOWKFYSWOPCZMQIEAFQVWJKVMOSOAFGVOOBGUJIBNVFQAPFQXIO9D']
-tag = [DIVULGYCOMUN]
+# IOTA API CONNECTION: parte del código que establece una conexión con un nodo de la red IOTA.
+client = iota_client.Client()
+print(client)
 
-#FILE 
+#FILE: parte del código que lee el archivo y guarda su contenido en bytes
 f = open("0.txt", "rb")
 pdfdatab=f.read()
 f.close()
 
-#ENCODE
+#ENCODE: “traduce” los bytes a base64. Es un asunto de formatos.
 b64PDF = codecs.encode(pdfdatab, 'base64')
 
-#COMPRESS
+#COMPRESS: comprime el tamaño total del mensaje en base64.
 compressed = zlib.compress(b64PDF,9)
 
-# CREATE TRANSACTION
-message = [TryteString.from_bytes(compressed)]
-print('Data size:', len(message[0]))
-
-tx = ProposedTransaction(
-    address = Address(address[0]),
-    message = message[0],
-    value = 0,
-    tag = Tag(tag[0])
+# CREATE MESSAGE: manda el mensaje al nodo de IOTA previamente conectado y muestra por pantalla el código que se debe apuntar.
+message = client.message(
+    index='COMUNICACIONyDIVULGACION', data= compressed
 )
+print(Message[‘message_id’])
 
-result = api.send_transfer(transfers=[tx])
-print('Transacci�n enviada correctamente')
-print('Tail_transaction:', result['bundle'].tail_transaction.hash)
-
-El programa que se encarga de obtener el archivo de la red, guard�ndolo como �1.txt�, es: [8]
-from iota import Iota, TryteString, ProposedTransaction, Address, Tag
+El programa que se encarga de obtener el archivo de la red, guardándolo como ‘1.txt’, con una explicación concisa es: [8]
+# Importa todas las librerías necesarias
 import codecs
 import zlib
+import iota_client
 
-from iota.transaction.types import TransactionTrytes
+# IOTA API CONNECTION: parte del código que establece una conexión con un nodo de la red IOTA y registra el identificador del mensaje que se desea buscar.
 
-# IOTA CONF - INTRODUCE TAIL_TRANS
-api = Iota('https://nodes.thetangle.org:443')
-tail_transaction = 'DLOXEGLGBWWLFYLPKEIWGHC9UMNJBQOUXJSXEWJTLWI9LNTGQRFNYGUMYNUTOCVLEMXQSAOVGRNIA9999'
+client = iota_client.Client()
+print(client)
+message_id = '60c9944b2bfb98a1cf7e61342a9561a911b11561a953b1ddf3ccf6e1a2f8b55a'
 
-# ADJUSTING QUERY - CHANGE
-data_size = 5696
-bundle = Iota.get_bundles(api,tail_transaction)
-trytes = bundle['bundles'][0].as_json_compatible()
-total = TransactionTrytes(b'')
-for i in trytes:
-    total += i['signature_message_fragment']
-file = TryteString.encode(total[2673:2673+data_size])
+# ADJUSTING QUERY – CHANGE: conocida la estructura del mensaje, se manipula para la obtención de valor. En concreto, es de interés el contenido del mensaje en formato bytearray.
 
-# CREATING FILE
+file = bytearray(client.get_message_data(message_id)['payload']['indexation'][0]['data'])
+print(file)
+
+#DECOMPRESS: descomprime el mensaje al tamaño original en base64.
 decompressed = zlib.decompress(file)
-bPDFout=codecs.decode(decompressed, 'base64')
-datafile=open("1.txt",'wb')
+
+#DECODE: “traduce” el base64 a bytes. Es un asunto de formatos, pero necesario para la creación del archivo.
+
+bPDFout = codecs.decode(decompressed, 'base64')
+datafile = open("1.txt",'wb')
 datafile.write(bPDFout)
 datafile.close()
 
-El README.md, que explica los requisitos y c�mo emplearlo, es:
-OBJETIVO
-Proyecto de la asignatura 'Comunicaci�n y Divulgaci�n de la Ciencia y la tecnolog�a' del Master de Ingenier�a Industrial de la UPM. En este repositorio se muestra un breve ejemplo de la capacidad de transmisi�n de archivos a trav�s de Iota.
-REQUIREMENTS
-API de IOTA para python: pip install PyOTA
-COMO FUNCIONA
-Es un programa muy b�sico. El script sending.py permite enviar un archivo, actualmente apuntando a 0.txt; el script receiving.py permite replicar ese archivo en la misma carpeta.
-Instrucciones
-i. Se puede modificar, en sending.py, la direcci�n (address) y etiqueta (tag) por cualquiera que cumpla los requisitos.
-ii. Se puede enviar cualquier tipo de archivo siempre que se especifique su nombre correctamente en sending.py: f = open("0.txt", "rb") 
-Observaci�n: los archivos se convierten de base64 a un TryteString. El tama�o por transacci�n se encuentra limitado a 2187 caracteres; grandes archivos requerir�n tantas transacciones que es probable que el nodo que las est� uniendo a la red rechace la solicitud.
-iii. Cuando se env�a un archivo se deben apuntar los siguientes par�metros: parameters
-iv. Estos par�metros se introducir�n en receiving.py l�neas 9 y 12.
-IV.	BIBLIOGRAF�A
+El README (o instrucciones) que explica los requisitos y cómo emplearlo se encuentra en el mismo repositorio. Conviene destacar:
+Los requirements (requisitos) para la ejecución del programa es una única librería.
+API de IOTA para python: pip install iota_core_python-0.2.0_alpha.3-cp36-abi3-win_amd64.whl
+La librería aún no se encuentra en el repositorio PyPI, pues se ha publicado recientemente (28-abril).
+El funcionamiento del programa muy básico. El script sending.py permite enviar un archivo, actualmente apuntando a 0.txt; el script receiving.py permite replicar ese archivo en la misma carpeta.
+Se deben tener en cuenta las siguientes consideraciones:
+i. Se puede modificar, en sending.py, el identificador (index) por cualquiera valor, permitiendo una mayor accesibilidad al mensaje.
+ii. Se puede enviar cualquier tipo de archivo siempre que se especifique su nombre correctamente en sending.py: f = open("0.txt", "rb"); y no sea superior al tamaño máximo de la red (35 kB).
+iii. Cuando se envía un archivo se deben apuntar los siguientes parámetros: Message_ID. Es necesario porque es el identificador único del mensaje, que solo hará referencia al mismo.
+Para facilitar la visualización de la utilidad del ejemplo también se ha emitido con anterioridad un archivo de texto simple, con el contenido de este artículo, para poder acceder al contenido directamente desde el servicio web que ofrecen los desarrolladores.
+El enlace para poder visualizar su contenido es: 
 
-[1] 	A. I. G. M. Luigi Atzori, �The Internet of Things,� Springer, 2010. 
-[2] 	NICouncil, ��Disruptive Civil Technologies - Six Technologies with potencial impacts on US Interests out to 2025�,� SRI Consulting, 2008.
-[3] 	BBVA, ��Cu�l es la diferencia entre una DLT y 'blockchain'?,� 26 09 2018. [En l�nea]. Available: https://www.bbva.com/es/diferencia-dlt-blockchain/. [�ltimo acceso: 02 05 2021].
-[4] 	W. B. Group, �Distributed Ledger Technology (DLT) And Blockchain,� World Bank Publications, Washington, DC, 2017.
-[5] 	"Lanner", �Por qu� la computaci�n de borde es clave para el 5G en el 2020,� Lanner, 02 01 2020. [En l�nea]. Available: https://www.lanner-america.com/es/blog-es/por-que-la-computacion-de-borde-es-clave-para-el-5g-en-el-2020/. [�ltimo acceso: 02 05 2021].
-[6] 	X. Z. J. V.-D. a. J. O.-M. Shengjing Sun, �Data Handling in Industry 4.0: Interoperability Based on Distributed Ledger Technology,� Sensor MDPI, p. 22, 2021. 
-[7] 	F. J. G. Beteg�n, �DISE�O DE SISTEMA DE MONITORIZACI�N Y CONSUMO DE SERVICIOS EN EL HOGAR A TRAV�S DE IOT Y TECNOLOG�AS BLOCKCHAIN,� Grado en Ingenier�a de Tecnolog�as Industriales, ETSII, UPM, Madrid, 2019.
-[8] 	F. J. G. Beteg�n, �GitHub,� 02 05 2021. [En l�nea]. Available: https://github.com/fjaviergb/MII_IOTA_PDF. [�ltimo acceso: 02 05 2021].
-[9] 	COIN360, �Coin360,� [En l�nea]. Available: https://coin360.com/. [�ltimo acceso: 25 04 2021].
-[10] 	A. I. G. M. Luigi Atzori, �The Internet of Things: a survey,� Computer Networks Journal, vol. 54, n� 15, p. 31, 2010. 
+
+IV.	BIBLIOGRAFÍA
+
+[1] 	A. I. G. M. Luigi Atzori, «The Internet of Things,» Springer, 2010. 
+[2] 	NICouncil, ««Disruptive Civil Technologies - Six Technologies with potencial impacts on US Interests out to 2025»,» SRI Consulting, 2008.
+[3] 	BBVA, «¿Cuál es la diferencia entre una DLT y 'blockchain'?,» 26 09 2018. [En línea]. Available: https://www.bbva.com/es/diferencia-dlt-blockchain/. [Último acceso: 02 05 2021].
+[4] 	W. B. Group, «Distributed Ledger Technology (DLT) And Blockchain,» World Bank Publications, Washington, DC, 2017.
+[5] 	"Lanner", «Por qué la computación de borde es clave para el 5G en el 2020,» Lanner, 02 01 2020. [En línea]. Available: https://www.lanner-america.com/es/blog-es/por-que-la-computacion-de-borde-es-clave-para-el-5g-en-el-2020/. [Último acceso: 02 05 2021].
+[6] 	X. Z. J. V.-D. a. J. O.-M. Shengjing Sun, «Data Handling in Industry 4.0: Interoperability Based on Distributed Ledger Technology,» Sensor MDPI, p. 22, 2021. 
+[7] 	F. J. G. Betegón, «DISEÑO DE SISTEMA DE MONITORIZACIÓN Y CONSUMO DE SERVICIOS EN EL HOGAR A TRAVÉS DE IOT Y TECNOLOGÍAS BLOCKCHAIN,» Grado en Ingeniería de Tecnologías Industriales, ETSII, UPM, Madrid, 2019.
+[8] 	F. J. G. Betegón, «GitHub,» 02 05 2021. [En línea]. Available: https://github.com/fjaviergb/MII_IOTA_PDF. [Último acceso: 02 05 2021].
+[9] 	COIN360, «Coin360,» [En línea]. Available: https://coin360.com/. [Último acceso: 25 04 2021].
+[10] 	A. I. G. M. Luigi Atzori, «The Internet of Things: a survey,» Computer Networks Journal, vol. 54, nº 15, p. 31, 2010. 
+
 
 

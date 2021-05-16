@@ -14,12 +14,9 @@ f.close()
 #ENCODE
 b64PDF = codecs.encode(pdfdatab, 'base64')
 
-#COMPRESS
-compressed = zlib.compress(b64PDF,9)
-
 # CREATE MESSAGE
 message = client.message(
-    index='COMUNICACIONyDIVULGACION', data=compressed
+    index='COMUNICACIONyDIVULGACION', data=pdfdatab
 )
 print("Message_ID: {}".format(message['message_id']))
 

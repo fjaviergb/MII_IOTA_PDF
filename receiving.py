@@ -1,21 +1,15 @@
-from iota import Iota, TryteString, ProposedTransaction, Address, Tag
 import codecs
 import zlib
-
-from iota.transaction.types import TransactionTrytes
+import iota_client
 
 # IOTA CONF - INTRODUCE TAIL_TRANS
-api = Iota('https://nodes.thetangle.org:443')
-tail_transaction = 'NUJRHOCAXEXWGXQSMPDDRHBRGBCSHCIQP9FALVMMQWRSFRSNHRMZIKRKDYQGAZDKWKAISQFGPHDG99999'
+client = iota_client.Client()
+print(client)
+message_id = '602a463e1acbe5aadab527f555175e3715bb4ba7daa037c86e7e8987e744cd69'
 
 # ADJUSTING QUERY - CHANGE
-data_size = 19864
-bundle = Iota.get_bundles(api,tail_transaction)
-trytes = bundle['bundles'][0].as_json_compatible()
-total = TransactionTrytes(b'')
-for i in trytes:
-    total += i['signature_message_fragment']
-file = TryteString.encode(total[2673:2673+data_size])
+file = bytearray(client.get_message_data(message_id)['payload']['indexation'][0]['data'])
+print(file)
 
 # CREATING FILE
 decompressed = zlib.decompress(file)
